@@ -1,5 +1,5 @@
 function flip(array, n) {
-    n -= 1;                            // don't know why but have to lower n by 1 before loop instantiation
+    n -= 1;
     for (i = 0; i < n / 2; i++) {
         tmp = array[n-i];
         array[n - i] = array[i];
@@ -10,9 +10,23 @@ function flip(array, n) {
 
 // Use only flip() here to manipulate the array
 function pancakeSort(array) {
+    for (count = 0; count < array.length; count++) {
+        n = findLargest(array.slice(0, (array.length - count)));
+        if (n == (array.length - count - 1)) {
+        } else {
+            flip(array, n + 1);
+            flip(array, array.length - count);
+        }
+    }
     return array;
 }
 
-
-//a = [1, 2, 3, 4, 5];
-//console.log(flip(a, 5));
+function findLargest(array) {
+    hIndex = 0;
+    for (i = 0; i <= array.length; i++) {
+        if (array[hIndex] < array[i]) {
+            hIndex = i;
+        }
+    }
+    return hIndex;
+}
