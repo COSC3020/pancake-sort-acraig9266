@@ -31,4 +31,6 @@ answer to this markdown file.
 
 
 
-T(n) = $\Theta$(n<sup>2</sup>) in terms of compares
+T(n) = $\Theta$(n<sup>2</sup>)
+	The loop within the main function runs n times. It calls the flip function twice per loop which has its own loop run n times. Therfore the n
+	complexity from each loop is multiplied making it n<sup>2</sup>.
