@@ -29,7 +29,34 @@ What is the asymptotic runtime ($\Theta$) of your algorithm in terms of the
 number of comparisons? What is it in terms of the number of flips? Add your
 answer to this markdown file.
 
+function pancakeSort(array) {
+    for (count = 0; count < array.length; count++) {			loop executed n times
+        n = findLargest(array.slice(0, (array.length - count)));	
+        if (n == (array.length - count - 1)) { 
+        } else {
+            flip(array, n + 1);
+            flip(array, array.length - count);
+        }
+    }
+    return array;
+}
 
+function findLargest(array) {
+    hIndex = 0;
+    																	     n 
+    for (i = 0; i <= array.length; i++) {				loop executed n - number of times loop in pancakeSort function has executed = ∑ 1 + 2 + 3 + ... + n = n(n-1) / 2
+    																	     1
+        if (array[hIndex] < array[i]) {					1 compare per execution of the loop
+            hIndex = i;
+        }
+    }
+    return hIndex;
+}
+
+T(n) = n x n(n+1) / 2
+T(n) = n x (n<sup>2</sup> + n) / 2
+T(n) = n<sup>3</sup> + n<sup>2</sup> / 2
+T(n) ∈ $\Theta$(n<sup>3</sup>)
 
 T(n) = $\Theta$(n<sup>2</sup>)
 	The loop within the main function runs n times. It calls the flip function twice per loop which has its own loop run n times. Therfore the n
