@@ -54,8 +54,11 @@ function findLargest(array) {
 }
 
 T(n) = n x n(n+1) / 2
+
 T(n) = n x (n<sup>2</sup> + n) / 2
+
 T(n) = n<sup>3</sup> + n<sup>2</sup> / 2
+
 T(n) ∈ $\Theta$(n<sup>3</sup>)
 
 T(n) = $\Theta$(n<sup>2</sup>)
