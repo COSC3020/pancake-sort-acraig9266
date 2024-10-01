@@ -60,8 +60,32 @@ T(n) = n x (n<sup>2</sup> + n) / 2
 
 T(n) = n<sup>3</sup> + n<sup>2</sup> / 2
 
-T(n) ∈ $\Theta$(n<sup>3</sup>)
+T(n) ∈ $\Theta$(n<sup>3</sup>) in terms of number of compares
 
-T(n) = $\Theta$(n<sup>2</sup>)
-	The loop within the main function runs n times. It calls the flip function twice per loop which has its own loop run n times. Therfore the n
-	complexity from each loop is multiplied making it n<sup>2</sup>.
+```javascript
+function pancakeSort(array) {
+    for (count = 0; count < array.length; count++) {			loop executes n times
+        n = findLargest(array.slice(0, (array.length - count)));
+        if (n == (array.length - count - 1)) {
+        } else {
+            flip(array, n + 1);						both flip lines execute every loop unless the next index is already correct, both are worst case executed n times
+            flip(array, array.length - count);				
+        }
+    }
+    return array;
+}
+
+function flip(array, n) {
+    n -= 1;
+    for (i = 0; i < n / 2; i++) { 	loop executes (n + 1) / 2 times, 1 flip per loop
+        tmp = array[n-i];
+        array[n - i] = array[i];
+        array[i] = tmp;
+    }
+    return array;
+}
+```
+
+T(n) = 2n((n+1) / 2)) = n<sup>2</sup> + n
+
+T(n) ∈ $\Theta$(n<sup>2</sup>) in terms of number of flips
