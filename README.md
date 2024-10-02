@@ -43,9 +43,9 @@ function pancakeSort(array) {
 
 function findLargest(array) {
     hIndex = 0;
-    																	     n 
+    																	                                                                 n 
     for (i = 0; i <= array.length; i++) {				// loop executed n - number of times loop in pancakeSort function has executed = ∑ 1 + 2 + 3 + ... + n = n(n-1) / 2
-    																	     1
+    																	                                                                 1
         if (array[hIndex] < array[i]) {					// 1 compare per execution of the loop
             hIndex = i;
         }
@@ -77,8 +77,9 @@ function pancakeSort(array) {
 
 function flip(array, n) {
     n -= 1;
-    for (i = 0; i < n / 2; i++) { 	loop executes (n + 1) / 2 times, 1 flip per loop
-        tmp = array[n-i];
+    for (i = 0; i < n / 2; i++) { 	            // loop executes (n + 1) / 2 times, 1 flip per loop
+        tmp = array[n-i]; 
+    for (i = 0; i <= array.length; i++) {
         array[n - i] = array[i];
         array[i] = tmp;
     }
