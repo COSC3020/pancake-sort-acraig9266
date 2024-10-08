@@ -1,3 +1,5 @@
+I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
+
 # Pancake Sort
 
 There is an abstract data type (ADT) called a *pancake array*, which provides
@@ -28,4 +30,62 @@ element into its correct position.
 What is the asymptotic runtime ($\Theta$) of your algorithm in terms of the
 number of comparisons? What is it in terms of the number of flips? Add your
 answer to this markdown file.
+```javascript
+function pancakeSort(array) {
+    for (count = 0; count < array.length; count++) {			// loop executed n times
+        n = findLargest(array.slice(0, (array.length - count)));	
+        if (n == (array.length - count - 1)) { 
+        } else {
+            flip(array, n + 1);
+            flip(array, array.length - count);
+        }
+    }
+    return array;
+}
 
+function findLargest(array) {
+    hIndex = 0;
+    																	                                                                 n 
+    for (i = 0; i <= array.length; i++) {				// loop executed n - number of times loop in pancakeSort function has executed = ∑ 1 + 2 + 3 + ... + n = n(n-1) / 2
+    																	                                                                 1
+        if (array[hIndex] < array[i]) {					// 1 compare per execution of the loop
+            hIndex = i;
+        }
+    }
+    return hIndex;
+}
+```
+
+T(n) = n x (n+1) / 2
+
+T(n) = (n<sup>2</sup> + n) / 2
+
+T(n) ∈ $\Theta$(n<sup>2</sup>) in terms of number of compares
+
+```javascript
+function pancakeSort(array) {
+    for (count = 0; count < array.length; count++) {			loop executes n times
+        n = findLargest(array.slice(0, (array.length - count)));
+        if (n == (array.length - count - 1)) {
+        } else {
+            flip(array, n + 1);						            both flip lines execute every loop unless the next index is already correct, both are worst case executed n times
+            flip(array, array.length - count);				    2n flips worst case
+        }
+    }
+    return array;
+}
+
+function flip(array, n) {
+    n -= 1;
+    for (i = 0; i < n / 2; i++) {                    
+        tmp = array[n-i];
+        array[n - i] = array[i];
+        array[i] = tmp;
+    }
+    return array;
+}
+```
+
+T(n) = 2n
+
+T(n) ∈ $\Theta$(n) in terms of number of flips
