@@ -1,3 +1,5 @@
+I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
+
 # Pancake Sort
 
 There is an abstract data type (ADT) called a *pancake array*, which provides
@@ -66,8 +68,8 @@ function pancakeSort(array) {
         n = findLargest(array.slice(0, (array.length - count)));
         if (n == (array.length - count - 1)) {
         } else {
-            flip(array, n + 1);						both flip lines execute every loop unless the next index is already correct, both are worst case executed n times
-            flip(array, array.length - count);				
+            flip(array, n + 1);						            both flip lines execute every loop unless the next index is already correct, both are worst case executed n times
+            flip(array, array.length - count);				    2n flips worst case
         }
     }
     return array;
@@ -75,9 +77,8 @@ function pancakeSort(array) {
 
 function flip(array, n) {
     n -= 1;
-    for (i = 0; i < n / 2; i++) { 	            // loop executes (n + 1) / 2 times, 1 flip per loop
-        tmp = array[n-i]; 
-    for (i = 0; i <= array.length; i++) {
+    for (i = 0; i < n / 2; i++) {                    
+        tmp = array[n-i];
         array[n - i] = array[i];
         array[i] = tmp;
     }
@@ -85,6 +86,6 @@ function flip(array, n) {
 }
 ```
 
-T(n) = 2n((n+1) / 2)) = n<sup>2</sup> + n
+T(n) = 2n
 
-T(n) ∈ $\Theta$(n<sup>2</sup>) in terms of number of flips
+T(n) ∈ $\Theta$(n) in terms of number of flips
